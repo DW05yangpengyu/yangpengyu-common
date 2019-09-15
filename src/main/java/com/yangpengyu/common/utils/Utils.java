@@ -1,6 +1,8 @@
 package com.yangpengyu.common.utils;
 
+import java.util.HashSet;
 import java.util.Random;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -171,5 +173,56 @@ public class Utils {
 		return sb;
 
 	}
-
+	/**
+	 * 
+	 * @Title: subRandom 
+	 * @Description: 方法2：在最小值min与最大值max之间截取subs个不重复的随机数。
+	 * 例如在1-10之间取3个不重复的随机数，那么[2,6,9]是对的，
+	 * [3,5,5]则不对，因为5重复了。应用场景：
+	 * 在100篇文章中随机取10篇文章，月考可能会使用到。 (8分)
+	 * @param min
+	 * @param max
+	 * @param subs
+	 * @return
+	 * @return: int[]
+	 */
+	public static int[] subRandom (int min, int max, int subs){
+		//定义数组
+		int[] values= new int[subs];
+		//用来存放不重复的数据
+		Set<Integer> set = new HashSet<>();
+		//如果set集合中数据和subs一致则跳出循环
+		while (set.size()!=subs) {
+			set.add(random(min, max));
+		}
+		
+		//遍历set放入数组
+		int j=0;
+		for (Integer integer : set) {
+			values[j]=integer;
+			j++;
+		}
+		return values;
+	
+	}
+	
+	/**
+	 * 
+	 * @Title: random 
+	 * @Description: 方法1：返回min-max之间的随机整数（包含min和max值），
+	 * 例如返回1-3之间的随机数，那么返回1或2或3都是正确的，
+	 * 返回4就不对。 (5分)
+	 * @param min
+	 * @param max
+	 * @return
+	 * @return: int
+	 */                     
+	public static int random(int min, int max){
+		//实例化一个Random 类
+		Random r = new Random();
+		//nextInt 返回的是一个小于max的随机整数,如max=10.则范湖 0-9之间的数值
+		return r.nextInt(max - min  + 1 )  +min;
+		
+	
+	}
 }

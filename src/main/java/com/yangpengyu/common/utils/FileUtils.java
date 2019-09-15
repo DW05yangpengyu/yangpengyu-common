@@ -7,12 +7,16 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.Reader;
+import java.lang.reflect.Constructor;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -302,6 +306,31 @@ public class FileUtils {
 	      e.printStackTrace();
 	    }
 	}
+	
+	/*
+	 * 
+	 */
+	public static List filToBean(String fileName,Constructor constructor) throws Exception{
+		File file = new File(fileName);
+		BufferedReader br = new BufferedReader(new FileReader(file));
+		String lineString=null;
+		List list = new ArrayList();
+		while((lineString=br.readLine())!=null){
+			String[] split = lineString.split("\\|");
+			if(split.length!=constructor.getParameterCount()){
+				System.out.println(" 数据 不合法： " + lineString);
+				continue;
+			}
+			Object object = constructor.newInstance(split);
+			
+			list.add(object);
+		}
+		return list;
+	}
+	
+	
+	
+	
 	
 	
 	
