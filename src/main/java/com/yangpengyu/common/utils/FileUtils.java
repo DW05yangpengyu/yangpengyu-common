@@ -316,7 +316,7 @@ public class FileUtils {
 		String lineString=null;
 		List list = new ArrayList();
 		while((lineString=br.readLine())!=null){
-			String[] split = lineString.split("\\|");
+			String[] split = lineString.split("\\||");
 			if(split.length!=constructor.getParameterCount()){
 				System.out.println(" 数据 不合法： " + lineString);
 				continue;
