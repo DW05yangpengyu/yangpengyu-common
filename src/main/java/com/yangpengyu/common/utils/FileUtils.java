@@ -28,17 +28,17 @@ import org.apache.log4j.Logger;
 public class FileUtils {
 	public static Logger log = Logger.getLogger(FileUtils.class); 
 	/**
-	 * 	��ȡ�ļ���չ��
+	 * 	锟斤拷取锟侥硷拷锟斤拷展锟斤拷
 	 * @param fileName
 	 * @return
 	 */
 	public static String getsuffix(String fileName){
 		int indexOf = fileName.lastIndexOf('.');
-		//û����չ��
+		//没锟斤拷锟斤拷展锟斤拷
 		if(indexOf<0){
 			return "";
 		}
-		//���һλ��.
+		//锟斤拷锟揭晃伙拷锟�.
 		if(indexOf>=fileName.length()){
 			return "";
 		}
@@ -47,10 +47,10 @@ public class FileUtils {
 	}
 	
 	/**
-	 * 3.5.3ɾ���ļ�
+	 * 3.5.3删锟斤拷锟侥硷拷
 	 * 
-	 * �����Ŀ¼����������ļ���������Ŀ¼�е��ļ���Ҫɾ��
-		ʹ�õݹ顣�漰���ݡ��ж�Ŀ¼�Ĵ����ԣ��ж��Ƿ�ΪĿ¼���ļ���ɾ����
+	 * 锟斤拷锟斤拷锟侥柯硷拷锟斤拷锟斤拷锟斤拷锟斤拷锟侥硷拷锟斤拷锟斤拷锟斤拷锟斤拷目录锟叫碉拷锟侥硷拷锟斤拷要删锟斤拷
+		使锟矫递归。锟芥及锟斤拷锟捷★拷锟叫讹拷目录锟侥达拷锟斤拷锟皆ｏ拷锟叫讹拷锟角凤拷为目录锟斤拷锟侥硷拷锟斤拷删锟斤拷锟斤拷
 	 * @return 
 	 */
 	public static void delFilePath(String fileName){
@@ -65,10 +65,10 @@ public class FileUtils {
 				delFilePath(fileName+"/"+string);
 				
 			}
-			log.info(" ------------ ɾ���ļ� �� �� " + fileName);
+			log.info(" ------------ 删锟斤拷锟侥硷拷 锟斤拷 锟斤拷 " + fileName);
 			file.delete();
 		}else{
-			log.info("ɾ���ļ�"+fileName);
+			log.info("删锟斤拷锟侥硷拷"+fileName);
 			file.delete();
 			return;
 		}
@@ -99,7 +99,7 @@ public class FileUtils {
 		}
 	}
 	/*
-	 *�ر��� 
+	 *锟截憋拷锟斤拷 
 	 */
 	public static void closeSteam(Closeable ...closeables) throws IOException{
 		for (Closeable closeable : closeables) {
@@ -108,7 +108,7 @@ public class FileUtils {
 	}
 	
 	/**
-	 * ������
+	 * 锟斤拷锟斤拷锟斤拷
 	 * @throws IOException 
 	 */
 	public static void copySteam(InputStream is,OutputStream os) throws IOException{
@@ -120,7 +120,7 @@ public class FileUtils {
 	}
 	
 	/**
-     * ���ж�ȡ�ļ�
+     * 锟斤拷锟叫讹拷取锟侥硷拷
      */
 	public static void ReadFileByLine(String filename) {
         File file = new File(filename);
@@ -155,7 +155,7 @@ public class FileUtils {
     }
 	
 	/**
-	 * ���ֽڶ�ȡ�ļ�
+	 * 锟斤拷锟街节讹拷取锟侥硷拷
 	 * 
 	 * @param filename
 	 */
@@ -206,7 +206,7 @@ public class FileUtils {
 		}
 	}
 	/**
-	 * ���ַ���ȡ�ļ�
+	 * 锟斤拷锟街凤拷锟斤拷取锟侥硷拷
 	 * 
 	 * @param filename
 	 */
@@ -237,7 +237,7 @@ public class FileUtils {
 		}
 	}
 	/**
-	 * ͨ��BufferedWriterд�ļ�
+	 * 通锟斤拷BufferedWriter写锟侥硷拷
 	 * 
 	 * @param filename
 	 */
@@ -283,19 +283,19 @@ public class FileUtils {
 		}
 	}
 	/*
-	 *�����ļ�����
+	 *锟斤拷锟斤拷锟侥硷拷锟斤拷锟斤拷
 	 */
 	public static void download(String realPath,HttpServletRequest request,HttpServletResponse response,String filename) throws FileNotFoundException {
-		 /* // ���ر����ļ�
-	    String fileName = "Operator.doc".toString(); // �ļ���Ĭ�ϱ�����
-*/	    // ��������
-	    InputStream inStream = new FileInputStream(realPath+filename);// �ļ��Ĵ��·��
-	    // ��������ĸ�ʽ
+		 /* // 锟斤拷锟截憋拷锟斤拷锟侥硷拷
+	    String fileName = "Operator.doc".toString(); // 锟侥硷拷锟斤拷默锟较憋拷锟斤拷锟斤拷
+*/	    // 锟斤拷锟斤拷锟斤拷锟斤拷
+	    InputStream inStream = new FileInputStream(realPath+filename);// 锟侥硷拷锟侥达拷锟铰凤拷锟�
+	    // 锟斤拷锟斤拷锟斤拷锟斤拷母锟绞�
 	    response.reset();
 	    response.setContentType("bin");
 	    response.addHeader("Content-Disposition", "attachment; filename=\"" + filename + "\"");
 	   
-	    // ѭ��ȡ�����е�����
+	    // 循锟斤拷取锟斤拷锟斤拷锟叫碉拷锟斤拷锟斤拷
 	    byte[] b = new byte[1024];
 	    int len;
 	    try {
@@ -316,14 +316,52 @@ public class FileUtils {
 		String lineString=null;
 		List list = new ArrayList();
 		while((lineString=br.readLine())!=null){
-			String[] split = lineString.split("\\||");
+			String[] split = lineString.split("\\|\\|");
 			Object object = constructor.newInstance(split);
 			list.add(object);
 		}
 		return list;
 	}
 	
-	
+	/*便利文件夹
+	*/	
+		public static List<String> getFileList(String pathName){
+			String[] list = new File(pathName).list();
+			 List<String> fileList = new ArrayList<String>();
+			for (String string : list) {
+				File subFile = new File(pathName + "\\" + string);
+				if(subFile!=null && subFile.exists() && subFile.isFile())
+					fileList.add(pathName + "\\" + string);
+			}
+			return fileList;
+			
+		}
+		
+		/**
+		 * 读取文件内容
+		 * @throws IOException 
+		 */
+		public static String readFile(String fileName) throws IOException {
+
+			StringBuilder sb = new StringBuilder();
+			
+			File file = new File(fileName);
+			BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
+			String lineString = null;
+			
+			while ((lineString = bufferedReader.readLine()) != null) {
+				sb.append(lineString).append("\n");
+			}
+			return sb.toString();
+		}
+		
+
+		public static void fileToBean(String string, Class<String> class1,
+				Class<String> class2, Class<String> class3, Class<String> class4,
+				Class<String> class5) {
+			// TODO Auto-generated method stub
+			
+		}
 	
 	
 	
